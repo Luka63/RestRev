@@ -1,0 +1,22 @@
+﻿@using System.Configuration
+@using RestaurantReview.Web.Helpers
+@model IEnumerable<RestaurantReview.Web.Models.RestaurantListViewModel>
+
+<div class="form-inline">
+    @using (Ajax.BeginForm(new AjaxOptions {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "restaurantList"
+    })) {
+     <input type="text" name="search" placeholder="Search..." />
+        <button type="submit" class="btn btn-default">Search</button>
+    }
+
+</div>
+        <div id="restaurantList">
+          @Html.Partial("_Restaurants", Model)
+        </div>
+
+
+
+

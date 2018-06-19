@@ -1,0 +1,15 @@
+﻿@using RestaurantReview.Web.Helpers;
+@model ReviewActionVm
+
+<div class="review">
+    <h4>@Model.Title</h4>
+    @if (Model.Review != null) {
+        @Html.Ratings(Model.Review.Rating)
+      
+       <div>@Model.Review.Body</div>
+
+    }
+    else {
+        @Html.Ratings(0);
+       <div>No reviews</div>
+    }</div>

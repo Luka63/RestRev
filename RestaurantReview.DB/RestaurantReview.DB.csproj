@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F8505FA8-D955-4481-963C-43D3FB2AC81F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RestaurantReview.DB</RootNamespace>
+    <AssemblyName>RestaurantReview.DB</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContext\ReviewsDb.cs" />
+    <Compile Include="Migrations\201805292258050_InitialCreate.cs" />
+    <Compile Include="Migrations\201805292258050_InitialCreate.Designer.cs">
+      <DependentUpon>201805292258050_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805292313262_Zip Length.cs" />
+    <Compile Include="Migrations\201805292313262_Zip Length.Designer.cs">
+      <DependentUpon>201805292313262_Zip Length.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805292329131_II.cs" />
+    <Compile Include="Migrations\201805292329131_II.Designer.cs">
+      <DependentUpon>201805292329131_II.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300029098_Review added.cs" />
+    <Compile Include="Migrations\201805300029098_Review added.Designer.cs">
+      <DependentUpon>201805300029098_Review added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300042115_asdf.cs" />
+    <Compile Include="Migrations\201805300042115_asdf.Designer.cs">
+      <DependentUpon>201805300042115_asdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805310032031_aaaaaaaaa.cs" />
+    <Compile Include="Migrations\201805310032031_aaaaaaaaa.Designer.cs">
+      <DependentUpon>201805310032031_aaaaaaaaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120112209_new Seed 1000 Records.cs" />
+    <Compile Include="Migrations\201806120112209_new Seed 1000 Records.Designer.cs">
+      <DependentUpon>201806120112209_new Seed 1000 Records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806182246311_Menu.cs" />
+    <Compile Include="Migrations\201806182246311_Menu.Designer.cs">
+      <DependentUpon>201806182246311_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RestaurantReview.Core\RestaurantReview.Core.csproj">
+      <Project>{d03621a2-85a4-4e8c-9b08-98f46928772d}</Project>
+      <Name>RestaurantReview.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805292258050_InitialCreate.resx">
+      <DependentUpon>201805292258050_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805292313262_Zip Length.resx">
+      <DependentUpon>201805292313262_Zip Length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805292329131_II.resx">
+      <DependentUpon>201805292329131_II.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300029098_Review added.resx">
+      <DependentUpon>201805300029098_Review added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300042115_asdf.resx">
+      <DependentUpon>201805300042115_asdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805310032031_aaaaaaaaa.resx">
+      <DependentUpon>201805310032031_aaaaaaaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120112209_new Seed 1000 Records.resx">
+      <DependentUpon>201806120112209_new Seed 1000 Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806182246311_Menu.resx">
+      <DependentUpon>201806182246311_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

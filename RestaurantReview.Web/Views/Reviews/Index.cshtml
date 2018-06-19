@@ -1,0 +1,76 @@
+﻿@model RestaurantReview.Core.Model.Restaurant
+@using RestaurantReview.Web.Helpers;
+<br />
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<p class="text-right">
+    @Html.ActionLink("Create New", "Manage", new { restaurantId = Model.Id }, new { @class = "btn btn-success" })
+</p>
+<h2>
+    @Model.Name
+</h2>
+
+<h2>Reviews For @Model.Name</h2>
+<div class="row">
+    <div class="col-lg-6">
+        @Html.Action("Review", new ReviewActionVm {
+       RestaurantId = Model.Id,
+       Type = Enums.ReviewDisplayType.Best
+        })
+    </div>
+    <div class="col-lg-6">
+        @Html.Action("Review", new ReviewActionVm {
+       RestaurantId = Model.Id,
+       Type = Enums.ReviewDisplayType.Worse
+   })
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            rating
+        </th>
+        <th>
+            rating
+        </th>
+        <th>
+            reviewer name
+        </th>
+        <th>
+            restaurant id
+        </th>
+        <th>
+            date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Reviews) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDate)
+            </td>
+            <td>
+                @Html.ActionLink("Manage", "Manage", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            </td>
+        </tr>
+    }
+
+</table>
