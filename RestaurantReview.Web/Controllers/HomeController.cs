@@ -13,19 +13,19 @@ namespace RestaurantReview.Web.Controllers {
 
     public class HomeController : Controller {
 
-
+       
         public ActionResult Index(string Search) {
             using (ReviewsDb db = new ReviewsDb()) {
 
                 // var Restaurant = db.Restaurants.ToList();
-
-                var rest = db.Restaurants.Where(p=>p.Name.Contains(Search) || Search ==null).Include(r => r.Reviews).ToList();
-
-
-                var vm = Mapper.Map<List<Restaurant>, List<RestaurantListViewModel>>(rest);
+                Boolean test = true;
+                var rest = db.Restaurants.Where(p => p.Name.Contains(Search) || Search == null).Include(r => r.Reviews).ToList();
+             //   var rest = db.Restaurants.Where(p => p.Name.Contains(Search) || p.Reviews.Count > 0).Include(r => r.Reviews).ToList();
+                //                     sourceModel          destinationModel        source          
+                var vm = Mapper.Map<List<Restaurant>, List<RestaurantListViewModel>>(rest); //mapping fron source to destination using source file   
 
                 if (Request.IsAjaxRequest()) {
-                    return PartialView("_Restaurants",vm); //(View,Data)
+                    return PartialView("_Restaurants", vm); //(View,Data)
                 }
                 return View(vm);
 

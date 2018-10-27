@@ -30,16 +30,12 @@ namespace RestaurantReview.Web.Models
         public string Web { get; set; }
 
         [Required]
-      
-
         public string Country { get; set; }
 
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
-        public int CountOfReviews { get; set; }
-
-        
+        public int CountOfReviews { get; set; }        
         public double AverageScore { get; set; }
 
     }

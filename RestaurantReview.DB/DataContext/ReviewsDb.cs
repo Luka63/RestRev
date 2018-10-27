@@ -12,12 +12,13 @@ namespace RestaurantReview.DB.DataContext {
       
         public DbSet<Review> Reviews { get; set; }
 
-        public DbSet<Menu> Menu { get; set; }
+        public DbSet<Menu> Menus { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Restaurant>().Property(p => p.Zip).HasMaxLength(10);
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

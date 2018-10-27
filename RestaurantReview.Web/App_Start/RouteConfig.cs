@@ -13,6 +13,8 @@ namespace RestaurantReview.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes(); //enagble attribute routing
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

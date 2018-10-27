@@ -1,0 +1,9 @@
+﻿.btnSearch, .movieBtn, .searchForm, .createNew, #printdiv {
+    display: none;
+}
+
+@media print {
+    a[href]:after {
+        content: none !important;
+    }
+}

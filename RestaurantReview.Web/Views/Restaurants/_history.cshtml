@@ -1,0 +1,21 @@
+﻿@model ProfileMenu
+<h1>History</h1>
+<script>
+    $(document).ready(function () {
+        alert("zd")
+        var m = @Html.Raw(Json.Encode(Model.Category))
+       if (m!=null) {
+           window.print();
+        }
+
+    })
+</script>
+@using (Ajax.BeginForm(new AjaxOptions {
+    HttpMethod = "get",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "name",
+})) {
+    <input class="textbox" type="text" name="name" placeholder="name..." />
+    <button type="submit" class="btnSearch btn btn-default">rename</button>
+}
+    <p id="name">@Model.name</p>

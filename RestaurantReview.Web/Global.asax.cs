@@ -12,7 +12,8 @@ namespace RestaurantReview.Web
     {
         protected void Application_Start()
         {
-            AutoMapper.Mapper.Initialize(p => p.AddProfile<App_Start.MappingProfile>());
+            AutoMapper.Mapper.Initialize(p => p.AddProfile<App_Start.MappingProfile>()); //initialize auto mapper profile
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

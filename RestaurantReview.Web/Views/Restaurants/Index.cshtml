@@ -1,48 +1,116 @@
-﻿@model IEnumerable<RestaurantReview.Core.Model.Restaurant>
+﻿@using System.Configuration
+@using RestaurantReview.Web.Helpers
+@model IEnumerable<RestaurantReview.Web.Models.RestaurantListViewModel>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css" />
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+<script src="~/Scripts/testJs.js"></script>
+<link href="~/Content/testCSS.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.2/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.2/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="~/Content/print.css" media="print">
+
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>restaurants Index</h2>
+<input id="printdiv" type="submit" value="Print" onclick="window.print()" />
+<input class="movieBtn btn btn-success" name="btnGetMovies" id="btnGetMovies" type="submit" value="Get Movies">
+<ul id="movieList"></ul>
 
-<p class="text-right">
-    @Html.ActionLink("Create New", "Create",null, new {@class ="btn btn-success"})
-</p>
-<table class="table">
-    <tr>    
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model =>  model.Web)
-        </th>
+<div class="container">
 
-        <th></th>
-    </tr>
+    <div class="row searchFrom">
+        <div class="form-inline pull-right">
+            @using (Ajax.BeginForm(new AjaxOptions {
+                HttpMethod = "get",
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "restaurantList"
+            })) {
+                <input class="textbox" type="text" name="search" placeholder="@ViewBag.Title" />
+                <button type="submit" class="btnSearch btn btn-default">Search</button>
+            }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-      
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            <a href="@item.Web" target="_blank" >@item.Web</a> 
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Review","Index", "Reviews", new { id=item.Id },null)
-        </td>
-    </tr>
-}
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <p class="pull-right row">
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success createNew" })
+            </p>
+            <div id="restaurantList">
+                @Html.Partial("_Restaurants", Model)
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+     
+    })
+    $("#btnGetMovies").click(function () {
+        var actionUrl = '@Url.Action("Movies", "Restaurants")';
+        var rest = '@Url.Action( "Details", "Restaurants", new { id=1, JSON = true }, null)';
+        $.getJSON(rest, displayData);
+    });
+     $("#btnGetMovies").on("mouseenter",function () {
+        var actionUrl = '@Url.Action("Movies", "Restaurants")';
+        var rest = '@Url.Action( "Details", "Restaurants", new { id=1, JSON = true }, null)';
+        $.getJSON(rest, displayData);
+    });
+    $("#btnGetMovies").on("mouseleave", function () {
+        $("#movieList").empty();
+    })
+
+    function displayData(response) {
+        if (response != null) {
+                $("#movieList").append("<li>" + response.Name +"</li>")
+
+        }
+    }
+</script>
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Web)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    <a href="@item.Web" target="_blank">@item.Web</a>
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Review", "Index", "Reviews", new { id = item.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>*@

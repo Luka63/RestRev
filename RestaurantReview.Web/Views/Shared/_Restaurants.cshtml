@@ -1,0 +1,58 @@
+﻿@using System.Configuration
+@using RestaurantReview.Web.Helpers
+@model IEnumerable<RestaurantReview.Web.Models.RestaurantListViewModel>
+
+<link rel="stylesheet" href="~/Content/print.css" media="print">
+
+@{
+    ViewBag.Title = "_general";
+}
+<script>
+
+</script>
+
+<div class="container-fluid prinable" id="printable">
+    @foreach (var restaurant in Model) {
+        <div class="row">
+            <div class="col-lg-12 restaurant">
+                <h1>
+                    @Html.ActionLink(restaurant.Name, "Index", "Reviews", new { restaurant.Id }, null) (@restaurant.CountOfReviews) | Rating: @Html.Ratings(restaurant.AverageScore)
+                    <span class="pull-right">
+                        @Html.ActionLink("Details", "Details", "Restaurants", new { restaurant.Id }, null)
+                    </span>
+                </h1>
+                <div class="body clearfix">
+                    @if (restaurant.ImageUrl != null) {
+                        <a data-fancybox data-caption="@restaurant.Name" href="@ConfigurationManager.AppSettings["RestaurantImageUploadBase"]/@restaurant.Id/@restaurant.ImageUrl">
+                            <img src="@ConfigurationManager.AppSettings["RestaurantImageUploadBase"]/@restaurant.Id/@restaurant.ImageUrl" />
+                        </a>
+                    }
+                    else {
+                        <img src="~/Images/no-image.png" />
+                    }
+                    <div>
+                        @restaurant.Address
+                    </div>
+                    <div>
+                        @restaurant.City
+                    </div>
+                    <div>
+                        @restaurant.State
+
+                    </div>
+                    <div>
+                        <a href="tel:@restaurant.Phone">@restaurant.Phone</a>
+                    </div>
+                    <div>
+                        <a href="@restaurant.Web" target="_blank">@restaurant.Name</a>
+                    </div>
+                    <div>
+                      FFFFFFFF  <input type="text" value="@restaurant.ImageUrl"/>
+                    </div>
+                     
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

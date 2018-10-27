@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Profile";
+}
+
+@model  ProfileMenu
+
+<div class="container">
+    <div class="col-lg-4 pull-left">
+      
+
+            <table class="controlPanel">
+                <tr></tr>
+                <tr>
+                    <td>
+                        @Ajax.ActionLink("general", "part", "Restaurants", new { tab = "general" }, new AjaxOptions {
+                       UpdateTargetId = "partial",
+                       Url = "/Restaurants/part?tab=general",
+                            InsertionMode = InsertionMode.Replace,
+                       HttpMethod = "GET",
+                   })
+                    </td>                </tr>
+                <tr>
+                    <td>
+                        @Ajax.ActionLink("history","part","Restaurants",new {tab = "history"}, new AjaxOptions {
+                       UpdateTargetId = "partial",
+                       Url = "/Restaurants/part?tab=history",
+                       InsertionMode = InsertionMode.Replace,
+                       HttpMethod = "GET",
+
+                   })
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.ActionLink("general actionlink","MenuProfile", new { tab = "general2" })</td>
+                </tr>
+                <tr>
+                     
+                </tr>
+                <tr>
+                    <td>1</td>
+                </tr>
+            </table>
+        
+    </div>
+    <div class="col-lg-8 pull-right" id="partial">
+        
+        @Html.Partial(Model.Category);
+    </div>
+</div>
+

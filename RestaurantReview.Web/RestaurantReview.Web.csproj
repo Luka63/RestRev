@@ -210,9 +210,19 @@
     </Compile>
     <Compile Include="Helpers\Enums.cs" />
     <Compile Include="Helpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Migrations\201805310049235_InitialCreate.cs" />
+    <Compile Include="Migrations\201805310049235_InitialCreate.Designer.cs">
+      <DependentUpon>201805310049235_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810040439217_remember h its dne.cs" />
+    <Compile Include="Migrations\201810040439217_remember h its dne.Designer.cs">
+      <DependentUpon>201810040439217_remember h its dne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ProfileMenu.cs" />
     <Compile Include="Models\RestaurantListViewModel.cs" />
     <Compile Include="Models\ReviewActionVm.cs" />
     <Compile Include="Models\ReviewVm.cs" />
@@ -224,6 +234,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\pring.css" />
+    <Content Include="Content\print.css" />
+    <Content Include="Content\testCSS.css" />
+    <Content Include="DataTables\datatables.css" />
+    <Content Include="DataTables\datatables.js" />
+    <Content Include="DataTables\datatables.min.css" />
+    <Content Include="DataTables\datatables.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -255,7 +272,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Scripts\testJs.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -300,7 +320,15 @@
     <Content Include="Views\Reviews\Manage.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Shared\_Review.cshtml" />
-    <Content Include="Views\Home\_Restaurants.cshtml" />
+    <Content Include="Views\Shared\_Restaurants.cshtml" />
+    <Content Include="Views\ReviewVms\Create.cshtml" />
+    <Content Include="Views\ReviewVms\Delete.cshtml" />
+    <Content Include="Views\ReviewVms\Details.cshtml" />
+    <Content Include="Views\ReviewVms\Edit.cshtml" />
+    <Content Include="Views\ReviewVms\Index.cshtml" />
+    <Content Include="Views\Restaurants\MenuProfile.cshtml" />
+    <Content Include="Views\Restaurants\_general.cshtml" />
+    <Content Include="Views\Restaurants\_history.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -328,6 +356,14 @@
       <Project>{f8505fa8-d955-4481-963c-43d3fb2ac81f}</Project>
       <Name>RestaurantReview.DB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805310049235_InitialCreate.resx">
+      <DependentUpon>201805310049235_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810040439217_remember h its dne.resx">
+      <DependentUpon>201810040439217_remember h its dne.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

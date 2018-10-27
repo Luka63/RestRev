@@ -10,5 +10,7 @@ namespace RestaurantReview.Core.Model {
         public List<string> FoodName { get; set; }
         public List<decimal> price { get; set; }
         public int RestaurantId { get; set; }
+        //assssssdf
+
     }
 }

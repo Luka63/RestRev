@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using Microsoft.AspNet.Identity;
 using RestaurantReview.Core.Model;
 using RestaurantReview.DB.DataContext;
@@ -35,15 +36,20 @@ namespace RestaurantReview.Web.Controllers
             }
 
             Review review = db.Reviews.Include(p => p.Restaurant).FirstOrDefault(p => p.Id == id);
+
             if (review == null)
             {
                 return HttpNotFound();
             }
+
+
             ReviewVm vm = new ReviewVm();
-            vm.Rating = review.Rating;
-            vm.Body = review.Body;
-            vm.ReviewerName = review.ReviewerName;
-            vm.RestaurantName = review.Restaurant.Name;
+            vm = Mapper.Map<Review, ReviewVm>(review); //mapping   
+
+            //vm.Rating = review.Rating;
+            //vm.Body = review.Body;
+            //vm.ReviewerName = review.ReviewerName;
+            //vm.RestaurantName = review.Restaurant.Name;
 
             return View(vm);
         }

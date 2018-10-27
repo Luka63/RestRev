@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\ProfileMenu.cs" />
     <Compile Include="Model\Restaurant.cs" />
     <Compile Include="Model\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
